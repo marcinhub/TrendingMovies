@@ -99,8 +99,64 @@
                     <view key="view" contentMode="scaleToFill" id="at9-r6-ME6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Hke-Ax-D38">
+                                <rect key="frame" x="300" y="20" width="300" height="400"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYh-ti-D1X">
+                                        <rect key="frame" x="0.0" y="0.0" width="29" height="134"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="genres" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8R-CO-lB0">
+                                        <rect key="frame" x="0.0" y="134" width="53" height="133"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="im3-55-JAN">
+                                        <rect key="frame" x="0.0" y="267" width="45" height="134"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rdh-AB-gr7">
+                                <rect key="frame" x="0.0" y="20" width="300" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Rdh-AB-gr7" secondAttribute="height" multiplier="3:4" id="ERw-iB-A90"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="overview" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="314-Iv-bvg">
+                                <rect key="frame" x="10" y="425" width="68" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="314-Iv-bvg" firstAttribute="leading" secondItem="at9-r6-ME6" secondAttribute="leading" constant="10" id="S9i-KO-mfN"/>
+                            <constraint firstItem="Hke-Ax-D38" firstAttribute="width" secondItem="at9-r6-ME6" secondAttribute="width" multiplier="0.5" id="XXx-4X-v74"/>
+                            <constraint firstItem="Hke-Ax-D38" firstAttribute="top" secondItem="m91-C6-rUJ" secondAttribute="bottom" id="ZqZ-On-8vd"/>
+                            <constraint firstItem="Rdh-AB-gr7" firstAttribute="top" secondItem="m91-C6-rUJ" secondAttribute="bottom" id="ceV-vv-Yx9"/>
+                            <constraint firstItem="Rdh-AB-gr7" firstAttribute="width" secondItem="at9-r6-ME6" secondAttribute="width" multiplier="0.5" id="fD3-ln-kQw"/>
+                            <constraint firstItem="314-Iv-bvg" firstAttribute="top" secondItem="Hke-Ax-D38" secondAttribute="bottom" constant="5" id="j9j-Q8-ycl"/>
+                            <constraint firstItem="Rdh-AB-gr7" firstAttribute="leading" secondItem="at9-r6-ME6" secondAttribute="leading" id="mvR-Ah-nTa"/>
+                            <constraint firstItem="Hke-Ax-D38" firstAttribute="height" secondItem="Rdh-AB-gr7" secondAttribute="height" id="vJV-PK-Rw6"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="314-Iv-bvg" secondAttribute="trailing" id="vMW-Wi-vhy"/>
+                            <constraint firstItem="Hke-Ax-D38" firstAttribute="leading" secondItem="Rdh-AB-gr7" secondAttribute="trailing" id="xiU-Yd-N5H"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="genresLabel" destination="N8R-CO-lB0" id="lhn-Jm-n9I"/>
+                        <outlet property="overviewLabel" destination="314-Iv-bvg" id="U94-d8-Kr7"/>
+                        <outlet property="posterImageView" destination="Rdh-AB-gr7" id="GVY-sh-SKA"/>
+                        <outlet property="ratingLabel" destination="im3-55-JAN" id="kJS-fs-r83"/>
+                        <outlet property="titleLabel" destination="sYh-ti-D1X" id="cJJ-Tb-o1A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TzY-Vn-8oX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
