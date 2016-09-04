@@ -14,7 +14,7 @@ struct TrendingMoviesService {
     
     private let extendedKey = "extended"
     
-    func getTrendingMovies(completion:([Movie]? -> ())) {
+    func getTrendingMovies(completion:(([Movie]?, NSError?) -> ())) {
         
         let extendedQueryItem = NSURLQueryItem(name: extendedKey, value: "full,images")
         let pageQueryItem = NSURLQueryItem(name: "page", value: "1")
@@ -22,14 +22,23 @@ struct TrendingMoviesService {
         
         let network = Network(scheme: "https", host: "api.trakt.tv", path: "/movies/trending", queryParameters: [pageQueryItem, limitQueryItem, extendedQueryItem])
         
-        network.download { (let json) in
+        network.download { (json, error) in
             
-            let moviesParser = TrendingMoviesParser(trendingMoviesArray: json)
-            let movies = moviesParser.getMovies()
+            if error == nil {
+                
+                if let json = json {
+                    
+                    let moviesParser = TrendingMoviesParser(trendingMoviesArray: json)
+                    let movies = moviesParser.getMovies()
+                    
+                    completion(movies, nil)
+
+                }
+            }
             
-            completion(movies)
-            
-            print(movies)
+            else {
+                completion(nil, error)
+            }  
         }
     }
 }

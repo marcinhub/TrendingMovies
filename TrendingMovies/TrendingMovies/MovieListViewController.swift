@@ -23,14 +23,25 @@ class MovieListViewController: UIViewController {
 
         self.navigationItem.title = "Trending Movies";
         
-        TrendingMoviesService().getTrendingMovies() { (movies) in
+        TrendingMoviesService().getTrendingMovies() { (movies, error) in
             
-            print(movies)
-            self.movies = movies
-            
-            dispatch_async(dispatch_get_main_queue()) {
+            if error == nil {
                 
-                self.tableVIew.reloadData()
+                if let movies = movies {
+                    
+                    self.movies = movies
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        
+                        self.tableVIew.reloadData()
+                    }
+                }
+            }
+            else {
+      
+                let alert = UIAlertController(title: "Alert", message: "No internet connection. Please connect to the internet.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
             }
         }
     }
