@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		015EAA7F1D7C4DCD00E43008 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015EAA7E1D7C4DCD00E43008 /* MovieDetailViewController.swift */; };
 		01CABF5D1D7B22D500CB58C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CABF5C1D7B22D500CB58C9 /* AppDelegate.swift */; };
 		01CABF5F1D7B22D500CB58C9 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CABF5E1D7B22D500CB58C9 /* MovieListViewController.swift */; };
 		01CABF621D7B22D500CB58C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01CABF601D7B22D500CB58C9 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		015EAA7E1D7C4DCD00E43008 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		01CABF591D7B22D500CB58C9 /* TrendingMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrendingMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01CABF5C1D7B22D500CB58C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01CABF5E1D7B22D500CB58C9 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,8 @@
 				01CABF5C1D7B22D500CB58C9 /* AppDelegate.swift */,
 				01CABF8A1D7B92CD00CB58C9 /* Service */,
 				01CABF5E1D7B22D500CB58C9 /* MovieListViewController.swift */,
+				015EAA7E1D7C4DCD00E43008 /* MovieDetailViewController.swift */,
+				01CABF8B1D7C14D200CB58C9 /* Movie.swift */,
 				01CABF601D7B22D500CB58C9 /* Main.storyboard */,
 				01CABF631D7B22D500CB58C9 /* Assets.xcassets */,
 				01CABF651D7B22D500CB58C9 /* LaunchScreen.storyboard */,
@@ -117,7 +121,6 @@
 		01CABF8A1D7B92CD00CB58C9 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				01CABF8B1D7C14D200CB58C9 /* Movie.swift */,
 				01CABF821D7B739600CB58C9 /* TrendingMoviesService.swift */,
 				01CABF881D7B92AC00CB58C9 /* VideoNetwork.swift */,
 			);
@@ -299,6 +302,7 @@
 				01CABF5D1D7B22D500CB58C9 /* AppDelegate.swift in Sources */,
 				01CABF891D7B92AC00CB58C9 /* VideoNetwork.swift in Sources */,
 				01CABF831D7B739600CB58C9 /* TrendingMoviesService.swift in Sources */,
+				015EAA7F1D7C4DCD00E43008 /* MovieDetailViewController.swift in Sources */,
 				01CABF8C1D7C14D200CB58C9 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

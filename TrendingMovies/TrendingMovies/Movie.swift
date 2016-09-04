@@ -14,5 +14,6 @@ class Movie {
     var overview: String?
     var genres: [String]?
     var rating: Double?
-
+    var posterThumbnailURL: String?
+    var posterFullURL: String?
 }

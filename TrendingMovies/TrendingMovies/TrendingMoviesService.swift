@@ -18,7 +18,7 @@ struct TrendingMoviesService {
         
         let extendedQueryItem = NSURLQueryItem(name: extendedKey, value: "full,images")
         let pageQueryItem = NSURLQueryItem(name: "page", value: "1")
-        let limitQueryItem = NSURLQueryItem(name: "limit", value: "5")
+        let limitQueryItem = NSURLQueryItem(name: "limit", value: "50")
         
         let network = Network(scheme: "https", host: "api.trakt.tv", path: "/movies/trending", queryParameters: [pageQueryItem, limitQueryItem, extendedQueryItem])
         
@@ -68,7 +68,14 @@ struct TrendingMoviesParser {
                         }
                         if let movieRating = movieData["rating"]?.double {
                             movieModel.rating = round(movieRating)
+                        }
+                        if let movieImages = movieData["images"]?.dictionary {
                             
+                            if let moviePoster = movieImages["poster"]?.dictionary {
+                                
+                                movieModel.posterThumbnailURL = moviePoster["thumb"]?.stringValue
+                                movieModel.posterFullURL = moviePoster["full"]?.stringValue
+                            }
                         }
                     }
                     movies.append(movieModel)

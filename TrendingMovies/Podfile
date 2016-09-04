@@ -6,4 +6,5 @@ use_frameworks!
 target 'TrendingMovies' do
     pod 'Alamofire', '~> 3.4'
     pod 'SwiftyJSON'
+    pod 'SDWebImage', '~>3.8'
 end
