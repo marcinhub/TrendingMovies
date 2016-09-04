@@ -33,7 +33,7 @@ struct Network {
         self.queryParameters = queryParameters
     }
     
-    func download() {
+    func download(completion:([[String: AnyObject]] -> ())) {
         
         if let url = constructURL() {
             
@@ -46,6 +46,8 @@ struct Network {
             case .Success(let JSON):
                 
                 print("Success with JSON: \(JSON)")
+                
+                completion(JSON as! [[String : AnyObject]])
                 
             case .Failure(let error):
                 

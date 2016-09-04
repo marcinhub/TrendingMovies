@@ -8,18 +8,73 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 struct TrendingMoviesService {
     
-    func getTrendingMovies() {
+    private let extendedKey = "extended"
+    
+    func getTrendingMovies(completion:([Movie]? -> ())) {
         
-        let extendedQueryItem = NSURLQueryItem(name: "extended", value: "full,images")
+        let extendedQueryItem = NSURLQueryItem(name: extendedKey, value: "full,images")
         let pageQueryItem = NSURLQueryItem(name: "page", value: "1")
-        let limitQueryItem = NSURLQueryItem(name: "limit", value: "50")
+        let limitQueryItem = NSURLQueryItem(name: "limit", value: "5")
         
         let network = Network(scheme: "https", host: "api.trakt.tv", path: "/movies/trending", queryParameters: [pageQueryItem, limitQueryItem, extendedQueryItem])
         
-        network.download()
+        network.download { (let json) in
+            
+            let moviesParser = TrendingMoviesParser(trendingMoviesArray: json)
+            let movies = moviesParser.getMovies()
+            
+            completion(movies)
+            
+            print(movies)
+        }
     }
 }
 
+struct TrendingMoviesParser {
+    
+    let trendingMoviesArray: [[String: AnyObject]]
+    
+    init(trendingMoviesArray: [[String: AnyObject]]) {
+        
+        self.trendingMoviesArray = trendingMoviesArray
+    }
+    
+    func getMovies() -> [Movie] {
+        
+        let json = JSON(trendingMoviesArray)
+        
+        var movies = [Movie]()
+        if let moviesArray = json.array {
+            for movie in moviesArray {
+                let movieModel = Movie()
+                if let movieModelDictonary = movie.dictionary {
+                    if let movieData = movieModelDictonary["movie"]?.dictionary {
+                        if let movieTitle = movieData["title"]?.string {
+                            movieModel.title = movieTitle
+                        }
+                        if let movieOverview = movieData["overview"]?.string {
+                            movieModel.overview = movieOverview
+                        }
+                        if let movieGenres = movieData["genres"]?.array {
+                            var movieGenreArray = [String]()
+                            for genre in movieGenres {
+                                movieGenreArray.append(genre.stringValue)
+                            }
+                            movieModel.genres = movieGenreArray
+                        }
+                        if let movieRating = movieData["rating"]?.double {
+                            movieModel.rating = round(movieRating)
+                            
+                        }
+                    }
+                    movies.append(movieModel)
+                }
+            }
+        }
+        return movies
+    }
+}

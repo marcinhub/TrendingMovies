@@ -9,14 +9,17 @@
 import UIKit
 import Alamofire
 
-class ViewController: UIViewController {
+class MovieListViewController: UIViewController {
     
     var trendingMovieService: TrendingMoviesService?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TrendingMoviesService().getTrendingMovies()
+        TrendingMoviesService().getTrendingMovies() { (movies) in
+            
+            print(movies)
+        }
     }
 }
 
